@@ -1,47 +1,142 @@
-*{
+* {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* Fuentes limpias para un diseño moderno */
 }
 
-button{
-    background-color: transparent;
-    border: unset;
-    cursor: pointer;
-    margin: 0;
-    transition: 0.5s;
+h1{
+    font-size: 2rem;
+    color: #FF4500; /* Naranja brillante */
+    text-align: center;
+    margin-top: 50px;
 }
-/* lista */
-.c-lista{
+
+/* Input de búsqueda */
+.c-buscador {
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 5px;
+    border: 2px solid #FF4500;
+    background-color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+
+/* Estilo para la lista de Digimones */
+.c-lista {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
 }
 
-.c-lista-pokemon{
-    background-color: aliceblue;
-    width: calc(50% - 5px);
-    padding: 10px;
+/* Estilo para los elementos de Digimon en la lista */
+.c-lista-digimon {
+    background-color: #FFD700; /* Color amarillo brillante */
+    width: calc(25% - 10px); /* Cada Digimon ocupa un 25% del ancho, ajustando el espacio */
+    padding: 15px;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* navegacion */
-.c-nav{
+
+/* Imagen de Digimón */
+.c-lista-digimon img {
+    width: 80px; /* Se ajusta el tamaño de la imagen */
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Nombres de los Digimones */
+.c-lista-digimon p {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Navegación fija */
+.c-nav {
     position: fixed;
     bottom: 0;
     left: 0;
-    background: silver;
+    background: #333; /* Fondo oscuro para la barra de navegación */
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 10px 15px;
     gap: 10px;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.c-nav-item{
+.c-nav-item {
     width: calc(25% - 7.5px);
-    background-color: red;
+    background-color: #FF4500; /* Naranja para los botones */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
 }
-.c-nav-item:hover{
-    color: yellow;
+
+
+
+/* Filtros de nivel */
+.filtro {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
+
+.filtro button {
+    background-color: #FF4500; /* Naranja para los filtros */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: start; /* Comienza desde arriba */
+    padding: 20px;
+}
+
+
+/* Favoritos */
+.c-lista-favoritos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.c-lista-favoritos .c-lista-digimon {
+    background-color: #FFD700; /* Fondo suave tipo Digimon */
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
