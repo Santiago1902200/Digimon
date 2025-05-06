@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+            appId: "55b71a7d-0449-4880-8372-e18dd037830c",
+            });
+        });
+</script>
     <title>DigimonAPI</title>
+
 </head>
 <body>
     <h1>DigimonAPI</h1>
@@ -31,6 +41,7 @@
     <script src="js/api.js"></script> <!-- Este debe ir después -->
     <script src="js/informacion.js"></script>
     <script src="js/rango.js"></script>
+    <script src="sw.js"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
