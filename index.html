@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
     <title>DigimonAPI</title>
 </head>
 <body>
     <h1>DigimonAPI</h1>
+    <button id="btn-instalar" style="display:none;">Instalar App</button>
     <main id="app">
         <!-- CONTENIDO DINAMICO-->
     </main>
@@ -29,6 +31,50 @@
     <script src="js/api.js"></script> <!-- Este debe ir después -->
     <script src="js/informacion.js"></script>
     <script src="js/rango.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker registrado ✅'))
+                .catch(error => console.log('Error al registrar SW:', error));
+        }
+
+        let deferredPrompt;
+
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault(); // Evita que aparezca automáticamente
+            deferredPrompt = e;
+
+            // Mostrar el botón personalizado
+            const btn = document.getElementById("btn-instalar");
+            if (btn) btn.style.display = "block";
+        });
+
+        document.getElementById("btn-instalar").addEventListener("click", async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt(); // Muestra el diálogo
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log("Resultado de instalación:", outcome);
+
+                // Ya no se necesita el prompt
+                deferredPrompt = null;
+                document.getElementById("btn-instalar").style.display = "none";
+            }
+        });
+
+        function esIOS() {
+            return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+        }
+
+        if (esIOS()) {
+            const mensaje = document.createElement("div");
+            mensaje.innerHTML = `
+            <p>En iOS, toca <span style="font-weight:bold;">Compartir</span> y luego "Agregar a pantalla de inicio" para instalar.</p>`;
+            document.getElementById("btn-instalar").replaceWith(mensaje);
+        }
+
+
+    </script>
     
     
     <script>
